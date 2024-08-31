@@ -6,14 +6,33 @@ import { Button } from "@/components/ui/button";
 import Playground from "@/components/playground";
 
 import React, { useEffect, useState } from "react";
-import { useDropzone } from "react-dropzone";
 
 export default function Home() {
   return (
     <Playground>
+      <Hello></Hello>
       <InputFile></InputFile>
     </Playground>
   );
+}
+
+export function Hello() {
+  const [hello, setHello] = useState("");
+
+  useEffect(() => {
+    async function fetchHello() {
+      console.log("drinne");
+      let res = await fetch("http://127.0.0.1:5000/api/python");
+
+      let data = await res.text();
+      setHello(data);
+    }
+    fetchHello();
+  }, []);
+
+  if (!hello) return <div>Loading...</div>;
+
+  return <div>{hello}</div>;
 }
 
 export function InputFile() {
