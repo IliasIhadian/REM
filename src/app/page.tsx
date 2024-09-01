@@ -2,8 +2,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import Playground from "@/components/playground";
 import Preview from "@/components/preview";
-
-import React, { useEffect, useState } from "react";
+import FormInput from "@/components/forminput";
 
 export default function Home() {
   return (
@@ -40,9 +39,12 @@ export function InputFile() {
         htmlFor="dropzone-file"
         className="  p-8 flex flex-col items-center justify-center w-full h-64 border-spacing-8 border-2 border-black rounded-sm  cursor-pointer bg-gray-50"
       >
-        <Preview />
+        <FormInput>
+          <Preview />
+        </FormInput>
       </label>
-      <Button type="submit">Submit</Button>
+      {/*       <Button type="submit">Submit</Button>
+       */}
     </div>
   );
 }

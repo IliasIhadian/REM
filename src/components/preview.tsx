@@ -1,15 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 export default function Preview() {
   const [preview, setPreview] = useState("");
 
+  useEffect(() => {
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
+    };
+    fetch("http://127.0.0.1:5000/api/inputs", requestOptions)
+      .then((response) => response.text())
+      .then((data) => console.log(data));
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
   function handlePreview(prop: any | null) {
-    console.log("drinne");
     console.log(prop);
     setPreview(URL.createObjectURL(prop));
+  }
+
+  function inputImage() {
+    const image = "";
   }
 
   return (
@@ -51,6 +69,7 @@ export default function Preview() {
         )}
       </div>
       <input
+        name="image"
         id="dropzone-file"
         type="file"
         className="hidden"
@@ -58,6 +77,7 @@ export default function Preview() {
           event.target.files ? handlePreview(event.target.files[0]) : null
         }
       />
+      <Button type="submit">Submit</Button>
     </>
   );
 }
