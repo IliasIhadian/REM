@@ -1,28 +1,42 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 
 export default function Preview() {
   const [preview, setPreview] = useState("");
 
-  useEffect(() => {
+  const handleUpload = async () => {
+    /* const upload = new FormData();
+    upload.append("file", preview);
+    */
+    let blob = await fetch(preview).then((r) => r.blob());
+    console.log(blob);
     // POST request using fetch inside useEffect React hook
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
+
+      body: blob,
     };
+
     fetch("http://127.0.0.1:5000/api/inputs", requestOptions)
       .then((response) => response.text())
-      .then((data) => console.log(data));
-
-    // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
+      .then((data) => {
+        /* var reader: any = new FileReader();
+        reader.readAsDataURL(data);
+        var result = reader.result;
+        //don't need type informations
+        result = data.split(",").pop();
+        console.log(result); */
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+    /*     console.log("i fire once");
+     */
+  };
 
   function handlePreview(prop: any | null) {
-    console.log(prop);
     setPreview(URL.createObjectURL(prop));
   }
 
@@ -77,7 +91,9 @@ export default function Preview() {
           event.target.files ? handlePreview(event.target.files[0]) : null
         }
       />
-      <Button type="submit">Submit</Button>
+      <Button type="submit" onClick={preview !== "" ? handleUpload : undefined}>
+        Submit
+      </Button>
     </>
   );
 }
