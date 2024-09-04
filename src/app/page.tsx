@@ -34,15 +34,8 @@ export function Hello() {
 export function InputFile() {
   return (
     <div className="grid w-full items-center gap-1.5">
-      <Label htmlFor="picture">Image</Label>
-      <label
-        htmlFor="dropzone-file"
-        className="  p-8 flex flex-col items-center justify-center w-full h-64 border-spacing-8 border-2 border-black rounded-sm  cursor-pointer bg-gray-50"
-      >
-        <FormInput>
-          <Preview />
-        </FormInput>
-      </label>
+      <Preview />
+
       {/*       <Button type="submit">Submit</Button>
        */}
     </div>
