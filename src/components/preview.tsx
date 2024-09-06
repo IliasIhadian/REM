@@ -79,7 +79,7 @@ export default function Preview() {
         .then(async (data) => {
           const k = b64toBlob(data);
           setforeground(URL.createObjectURL(await k));
-          console.log(foreground);
+
           setUploadReady(false);
           setLabelname("Calculated!");
         })
@@ -89,9 +89,7 @@ export default function Preview() {
 
   function handlePreview(prop: any | null) {
     if (labelname === "Image") {
-      console.log(prop);
       setPreviewImage(URL.createObjectURL(prop));
-      console.log(URL.createObjectURL(prop));
     } else if (labelname === "Trimap") {
       setPreviewTrimap(URL.createObjectURL(prop));
     }

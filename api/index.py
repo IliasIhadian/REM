@@ -46,7 +46,7 @@ def create_todo_item():
 
 def cfm(img, tri):
 
-    print("1")
+
 
     """
     Schreib dein eigenes CF Programm
@@ -99,7 +99,7 @@ def cfm(img, tri):
     v = np.empty(n_v, dtype=np.float64)
 
 
-    print("2")
+
 
     for y in range(r,h-r):
         for x in range(r,w-r):
@@ -154,7 +154,7 @@ def cfm(img, tri):
     #Hier bauen wir endlich die Laplace Matrix
     L = scipy.sparse.csr_matrix((v, (i, j)), shape=(n, n))
 
-    print("3")
+
 
 
     '''
@@ -206,7 +206,7 @@ def cfm(img, tri):
     #Hier werden die Bilder geöffnet und uns gezeigt
     #Image.fromarray(cutout).show(title="foreground")
 
-    print("fin")
+
     return  Image.fromarray(cutout)
 
 

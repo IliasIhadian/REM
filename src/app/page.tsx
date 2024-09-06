@@ -11,27 +11,8 @@ export default function Home() {
     </Playground>
   );
 }
-/* 
 
-export function Hello() {
-  const [hello, setHello] = useState("");
-
-  useEffect(() => {
-    async function fetchHello() {
-      let res = await fetch("http://127.0.0.1:5000/api/python");
-
-      let data = await res.text();
-      setHello(data);
-    }
-    fetchHello();
-  }, []);
-
-  if (!hello) return <div>Loading...</div>;
-
-  return <div>{hello}</div>;
-} */
-
-export function InputFile() {
+function InputFile() {
   return (
     <div className="grid w-full items-center gap-1.5">
       <Preview />
