@@ -74,7 +74,10 @@ export default function Preview() {
         body: JSON.stringify(data),
       };
 
-      fetch("http://127.0.0.1:5000/api/inputs", requestOptions)
+      fetch(
+        "https://iliasihadian.pythonanywhere.com/api/inputs",
+        requestOptions
+      )
         .then((response) => response.text())
         .then(async (data) => {
           const k = b64toBlob(data);
