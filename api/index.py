@@ -27,12 +27,14 @@ def create_todo_item():
 
     
     tri = tmp["Trimap"]
+    #print(tri)
     tri = BytesIO(base64.b64decode(tri))
 
 
     try:
         foreground = cfm(img, tri)
     except:
+        print("lol")
         return "image and trimap different size", 400
 
 
@@ -58,8 +60,9 @@ def cfm(img, tri):
     trimap = np.array(Image.open(tri).convert(  "L"))/255.0
 
     h, w, d = image.shape
-    htri, wtri, _ = trimap.shape
-    if (h != htri) or (w != wtri )  : raise Exception("Sorry, no numbers below zero")
+    htri, wtri = trimap.shape
+    if (h != htri) or (w != wtri )  : 
+        raise Exception("Sorry, no numbers below zero")
 
 
 

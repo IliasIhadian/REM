@@ -69,8 +69,8 @@ const PreviewButton: React.FC<Props> = ({
       };
 
       fetch(
-        "https://iliasihadian.pythonanywhere.com/api/inputs",
-        /* "http://127.0.0.1:5000/api/inputs", */
+        /* "https://iliasihadian.pythonanywhere.com/api/inputs", */
+        "http://127.0.0.1:5000/api/inputs",
         requestOptions
       )
         .then((response) => response.text())
