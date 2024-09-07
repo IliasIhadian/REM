@@ -108,6 +108,7 @@ const PreviewButton: React.FC<Props> = ({
             : "Submit"}
         </Button>
       )}
+
       {labelname !== "Calculated!" ? undefined : (
         <DownloadButton
           urlObject={foreground}
@@ -115,6 +116,7 @@ const PreviewButton: React.FC<Props> = ({
           buttonname={"Download"}
         ></DownloadButton>
       )}
+
       {labelname !== "Error!" ? undefined : (
         <Alert variant="destructive">
           <AlertCircle className="h-4 w-4" />
