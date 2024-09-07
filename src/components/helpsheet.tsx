@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import DownloadButton from "./downloadbutton";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 const useDesktopMediaQuery = () =>
   useMediaQuery({ query: "(min-width: 1280px)" });
@@ -54,7 +55,8 @@ export default function HelpSheet() {
                 unoptimized
               ></Image>
               <SheetDescription>
-                2. Upload the associated Trimap (it needs to have the same size)
+                2. Upload the associated Trimap (it needs to have the same size
+                and not to big)
               </SheetDescription>
               <Image
                 src={"/tut2.png"}
@@ -95,6 +97,11 @@ export default function HelpSheet() {
                   ></DownloadButton>
                 </div>
               </div>
+
+              <SheetDescription className="pt-2  font-bold">
+                Socials:{" "}
+                <a href={"https://ihadian.com/contact"}>ihadian.com/contact</a>
+              </SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>
@@ -144,7 +151,7 @@ export default function HelpSheet() {
                 alt={"lemur"}
                 unoptimized
               ></Image>
-              <div></div>
+
               <SheetDescription className="text-xs">
                 Here are some example images to use:
               </SheetDescription>
@@ -164,6 +171,10 @@ export default function HelpSheet() {
                   ></DownloadButton>
                 </div>
               </div>
+              <SheetDescription className=" font-bold">
+                Socials:{" "}
+                <a href={"https://ihadian.com/contact"}>ihadian.com/contact</a>
+              </SheetDescription>
             </SheetHeader>
           </SheetContent>
         </Sheet>
