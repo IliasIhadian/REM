@@ -100,7 +100,11 @@ const PreviewButton: React.FC<Props> = ({
         </Button>
       )}
       {labelname !== "Calculated!" ? undefined : (
-        <DownloadButton urlObject={foreground}></DownloadButton>
+        <DownloadButton
+          urlObject={foreground}
+          filename={"foreground"}
+          buttonname={"Download"}
+        ></DownloadButton>
       )}
     </>
   );
