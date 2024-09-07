@@ -2,9 +2,17 @@ import React from "react";
 import { saveAs } from "file-saver";
 import { Button } from "./ui/button";
 
-export default function DownloadButton({ urlObject }: { urlObject: string }) {
+export default function DownloadButton({
+  urlObject,
+  filename,
+  buttonname,
+}: {
+  urlObject: string;
+  filename: string;
+  buttonname: string;
+}) {
   const saveFile = (urlObject: string | Blob) => {
-    saveAs(urlObject, "foreground.png");
+    saveAs(urlObject, filename);
   };
   return (
     <div>
@@ -16,7 +24,7 @@ export default function DownloadButton({ urlObject }: { urlObject: string }) {
         >
           <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
         </svg>
-        <span>Download</span>
+        <span>{buttonname}</span>
       </Button>
     </div>
   );
