@@ -1,5 +1,5 @@
 import base64
-from flask import Flask, request
+from flask import Flask, jsonify, request, abort
 from flask_cors import CORS
 from PIL import Image 
 from io import BytesIO
@@ -30,9 +30,10 @@ def create_todo_item():
     tri = BytesIO(base64.b64decode(tri))
 
 
-
-    foreground = cfm(img, tri)
-    
+    try:
+        foreground = cfm(img, tri)
+    except:
+        return "image and trimap different size", 400
 
 
     im_file = BytesIO()
@@ -57,6 +58,8 @@ def cfm(img, tri):
     trimap = np.array(Image.open(tri).convert(  "L"))/255.0
 
     h, w, d = image.shape
+    htri, wtri, _ = trimap.shape
+    if (h != htri) or (w != wtri )  : raise Exception("Sorry, no numbers below zero")
 
 
 

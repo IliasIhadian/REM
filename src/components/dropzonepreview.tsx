@@ -30,7 +30,8 @@ const DropzonePreview: React.FC<Props> = ({
             width={0}
             height={0}
             className="  object-contain h-48 w-full"
-            alt={"prview of the inputed image"}
+            alt={"preview of the inputed image"}
+            unoptimized
           ></Image>
         ) : labelname === "Image" ? (
           previewImage === "" ? (
@@ -42,6 +43,7 @@ const DropzonePreview: React.FC<Props> = ({
               height={0}
               className="  object-contain h-48 w-full"
               alt={"prview of the inputed image"}
+              unoptimized
             ></Image>
           )
         ) : previewTrimap === "" ? (
@@ -53,12 +55,14 @@ const DropzonePreview: React.FC<Props> = ({
             height={0}
             className="  object-contain h-48 w-full"
             alt={"prview of the inputed image"}
+            unoptimized
           ></Image>
         )}
         <input
           name="image"
           id="dropzone-file"
           type="file"
+          accept="image/png"
           className="hidden"
           onChange={(event) =>
             event.target.files ? onPreview(event.target.files[0]) : null

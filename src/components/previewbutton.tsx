@@ -1,5 +1,8 @@
 import DownloadButton from "./downloadbutton";
 import { Button } from "./ui/button";
+import { AlertCircle } from "lucide-react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 interface Props {
   foreground: string;
@@ -72,19 +75,25 @@ const PreviewButton: React.FC<Props> = ({
       )
         .then((response) => response.text())
         .then(async (data) => {
-          const k = b64toBlob(data);
-          setForeground(URL.createObjectURL(await k));
-
-          setLabelname("Calculated!");
+          if (data !== "image and trimap different size") {
+            const k = b64toBlob(data);
+            setForeground(URL.createObjectURL(await k));
+            setLabelname("Calculated!");
+          } else {
+            setLabelname("Error!");
+          }
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
   return (
     <>
       {labelname === "Calculating..." ||
-      labelname === "Calculated!" ? undefined : (
+      labelname === "Calculated!" ||
+      labelname === "Error!" ? undefined : (
         <Button
           type="submit"
           onClick={
@@ -105,6 +114,16 @@ const PreviewButton: React.FC<Props> = ({
           filename={"foreground"}
           buttonname={"Download"}
         ></DownloadButton>
+      )}
+      {labelname !== "Error!" ? undefined : (
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>
+            Your Image and Trimap need to have the same size! Plz reload the
+            page.
+          </AlertDescription>
+        </Alert>
       )}
     </>
   );
