@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import DownloadButton from "./downloadbutton";
 import { useMediaQuery } from "react-responsive";
-import Link from "next/link";
+import { Button } from "./ui/button";
 
 const useDesktopMediaQuery = () =>
   useMediaQuery({ query: "(min-width: 1280px)" });
@@ -35,11 +35,11 @@ export default function HelpSheet() {
     <>
       <Desktop>
         <Sheet>
-          <div>
-            <SheetTrigger className="absolute top-0 right-0  bg-black text-white p-2 rounded-sm">
+          <SheetTrigger asChild>
+            <Button className="absolute top-0 right-0  bg-black text-white p-2 rounded-sm">
               Do you need help?
-            </SheetTrigger>
-          </div>
+            </Button>
+          </SheetTrigger>
           <SheetContent>
             <SheetHeader>
               <SheetTitle>How to use REM.</SheetTitle>

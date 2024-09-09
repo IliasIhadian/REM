@@ -1,6 +1,6 @@
 import DownloadButton from "./downloadbutton";
 import { Button } from "./ui/button";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Loader2 } from "lucide-react";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -108,11 +108,17 @@ const PreviewButton: React.FC<Props> = ({
             : "Submit"}
         </Button>
       )}
+      {labelname === "Calculating..." ? (
+        <Button disabled>
+          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          Please wait
+        </Button>
+      ) : undefined}
 
       {labelname !== "Calculated!" ? undefined : (
         <DownloadButton
           urlObject={foreground}
-          filename={"foreground"}
+          filename={"foreground.png"}
           buttonname={"Download"}
         ></DownloadButton>
       )}

@@ -1,15 +1,7 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
-import Image from "next/image";
-import { Button } from "./ui/button";
-import { Label } from "@radix-ui/react-label";
-import DefaultImage from "./defaultimage";
-import { Type } from "lucide-react";
-import { headers } from "next/headers";
 import { Progress } from "@/components/ui/progress";
-import DownloadButton from "./downloadbutton";
 import Labeler from "./labeler";
 import DropzonePreview from "./dropzonepreview";
 import PreviewButton from "./previewbutton";
