@@ -34,14 +34,19 @@ export default function Home() {
     <Frame>
       <div className="grid grid-flow-row grid-rows-4  gap-4">
         <div className="p-8">
-          <h1 className=" text-center text-6xl">REMove the Background.</h1>
+          <Desktop>
+            <h1 className=" text-center text-6xl">REMove the Background.</h1>
+          </Desktop>
+          <TabletAndBelow>
+            <h1 className=" text-center text-4xl">REMove the Background.</h1>
+          </TabletAndBelow>
           <p className=" text-center p-2">
             REM cuts out the foreground of your choosen image using alphamatting
             Algorithm.
           </p>
         </div>
-        <div className=" grid grid-flow-col grid-col-5  px-8 pb-8  w-5/6 h-auto  place-self-center border-spacing-8 border-2 border-black rounded-sm">
-          <Desktop>
+        <Desktop>
+          <div className=" grid grid-flow-col grid-col-5  px-8 pb-8  w-5/6 h-auto  place-self-center border-spacing-8 border-2 border-black rounded-sm">
             <div className="p-8">
               <HoverCard>
                 <HoverCardTrigger asChild>
@@ -88,26 +93,8 @@ export default function Home() {
                 unoptimized
               ></Image>
             </div>
-          </Desktop>
-          <TabletAndBelow>
-            <HoverCard>
-              <HoverCardTrigger asChild>
-                <Image
-                  src={"/frontimg.png"}
-                  width={0}
-                  height={0}
-                  className="object-contain h-40 w-full"
-                  alt={"example imagery"}
-                  unoptimized
-                ></Image>
-              </HoverCardTrigger>
-              <HoverCardContent>
-                Das lemur.png stammt von Mathias Appel lizensiert unter CC0 1.0
-                Universal (CC0 1.0) Public Domain License.
-              </HoverCardContent>
-            </HoverCard>
-          </TabletAndBelow>
-        </div>
+          </div>
+        </Desktop>
         {/* <div>
           <HoverCard>
           <HoverCardTrigger className="p-2" asChild>
